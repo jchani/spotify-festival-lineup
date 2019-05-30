@@ -5,6 +5,7 @@ module.exports = (env) => {
 
   return {
     entry: './src/app/app.js',
+    devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
     output: {
       path: path.join(__dirname, 'public'),
       filename: 'bundle.js',
@@ -41,6 +42,5 @@ module.exports = (env) => {
         ],
       }]
     },
-    devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map'
   }
 };

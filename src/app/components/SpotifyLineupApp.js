@@ -65,7 +65,7 @@ class SpotifyLineupApp extends React.Component {
 
     return (
       <div className="background">
-        <div class="card">
+        <div className="card">
           <Header/>
           {token && token != "undefined" &&
            <Results
