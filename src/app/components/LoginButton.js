@@ -5,7 +5,7 @@ const LoginButton = (props) => {
   const responseType = encodeURIComponent('code');
   const clientId = encodeURIComponent('569b69dd5ce3475887487257eeca0cbc');
   const scope = encodeURIComponent('user-read-recently-played user-top-read user-read-email');
-  const redirectUri = encodeURIComponent('http://localhost:8888/callback');
+  const redirectUri = encodeURIComponent('http://localhost:8080/callback');
 
   const loginUrl = `${authEndpoint}?response_type=${responseType}` + 
                    `&client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}`;

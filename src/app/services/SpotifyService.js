@@ -1,8 +1,8 @@
 import axios from'axios';
 
-export function getTopArtists(access_token, timeRange) {
+export function getTopArtists(access_token, timeRange, limit) {
   const config = { headers: { 'Authorization': 'Bearer ' + access_token } };
-  return axios.get(`https://api.spotify.com/v1/me/top/artists?limit=50&time_range=${timeRange}`, config);
+  return axios.get(`https://api.spotify.com/v1/me/top/artists?limit=${limit}&time_range=${timeRange}`, config);
 };
 
 export function getName(access_token) {

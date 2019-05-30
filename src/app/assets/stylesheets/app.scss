@@ -9,7 +9,7 @@
 .card {
   //format header
   position:absolute;
-  top: 42%;
+  top: 32.5%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: transparent;
@@ -57,4 +57,76 @@ button {
 
 .right-button {
   border-radius: 0px 10px 10px 0px;
+}
+
+
+//Overriding default React modal styles
+.modal-content {
+  background: url('../images/Lineup4.jpg');
+  background-size:cover;
+  background-position: center;
+  text-transform: uppercase;
+  font-family: 'Futura';
+  padding-left: 5vh;
+  padding-right: 5vh;
+  padding-bottom: 20vh;
+  border:none;
+  
+}
+.modal-header {
+  padding: 16px 16px 0px 0px;
+  border: none;
+}
+
+.modal-body {
+  padding: 16px 0px 0px 0px;
+}
+
+
+
+// .lineup {
+//   // background: url('../images/Lineup1.jpeg');
+//   // background-size:cover;
+//   // background-position: center;
+//   // text-transform: uppercase;
+//   font-family: 'Futura';
+//   // padding-bottom: 20vh;
+// }
+
+.modal-mini-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border:none;
+}
+
+.festival-title {
+  font-size: -webkit-xxx-large;
+}
+
+//LINEUP
+.vertical-flow {
+  flex-direction: column;
+}
+
+.row {
+  margin-top: 2vh;
+  justify-content: space-evenly;
+}
+
+.row1 {
+  font-size: xx-large;
+}
+
+.row2 {
+  font-size: x-large;
+}
+
+.row3 {
+  font-size: large;
+  
+}
+
+.row4 {
+  font-size: medium;
 }

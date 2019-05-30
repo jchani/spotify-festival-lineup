@@ -4,22 +4,20 @@ const cors = require('cors');
 const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const port = process.env.PORT || 8080;
 
 const client_id = '569b69dd5ce3475887487257eeca0cbc'; // Your client id
 const client_secret = '7a44e066e64e405a86dda37818b1ca53'; // Your secret
-const redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
-
-
-const stateKey = 'spotify_auth_state';
+const redirect_uri = 'http://localhost:8080/callback'; // Your redirect uri
+const publicPath = path.join(__dirname, '..','..','public');
 
 const app = express();
-
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(publicPath))
    .use(cors())
    .use(cookieParser());
 
 app.get('/', function(req, res) {
-  res.sendFile(path.resolve(__dirname, '../../public/index.html'));
+  res.sendFile(path.resolve(publicPath, 'index.html'));
 });
 
 app.get('/callback', function(req, res) {
@@ -83,6 +81,6 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-
-console.log('Listening on 8888');
-app.listen(8888);
+app.listen(port, () => {
+  console.log('Server is up!');
+});
