@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import LoginButton from './LoginButton';
+import NavColumn from './NavColumn';
 import Results from './Results';
 import {Card} from 'react-bootstrap';
 import { refreshToken } from '../services/SpotifyService';
@@ -26,7 +27,7 @@ class SpotifyLineupApp extends React.Component {
     const token = tokenCookie ? tokenCookie[1] : null;
     const refresh =  refreshCookie ? refreshCookie[1] : null;
 
-    if (token && token != "undefined") {
+    if (token && token != 'undefined') {
       this.setToken(token);
     } else if (!token && refresh) {
       refreshToken(refresh).then(response => {
@@ -52,22 +53,15 @@ class SpotifyLineupApp extends React.Component {
     this.setState({ token: token });
   }
 
-//   <Card bg="light">
-//   <Card.Body>
-//     <Header/>
-//     {token && token != "undefined" && <Results token={this.state.token}/>}
-//     {!token && <LoginButton />}
-//   </Card.Body>
-// </Card>
-
   render(){
     const { token } = this.state;
 
     return (
-      <div className="background">
-        <div className="card">
+      <div className='background'>
+        <NavColumn isLoggedIn={token && token != 'undefined'}/>
+        <div className='card'>
           <Header/>
-          {token && token != "undefined" &&
+          {token && token != 'undefined' &&
            <Results
             token={this.state.token}
             festivalNamePrefixes={this.state.festivalNamePrefixes}
@@ -80,10 +74,10 @@ class SpotifyLineupApp extends React.Component {
 }
 
 SpotifyLineupApp.defaultProps = {
-  festivalPrefixes: ["Ultra", "Lolla", "Electric", "Burning", "Warped", "Tomorrow", "Space",
-                     "Time Warp", "Outside", "Dirty Bird", "Lightning", "Fire"],
-  festivalSuffixes: ["palooza", " Daisy Carnival", "lands", " Forest", " Fields", " Zoo",
-                     " Man", "fest", " Campout", " in a Bottle", " Cruise"],
+  festivalPrefixes: ['Ultra', 'Lolla', 'Electric', 'Burning', 'Warped', 'Tomorrow', 'Space',
+                     'Time Warp', 'Outside', 'Dirty Bird', 'Lightning', 'Fire'],
+  festivalSuffixes: ['palooza', ' Daisy Carnival', 'lands', ' Forest', ' Fields', ' Zoo',
+                     ' Man', 'fest', ' Campout', ' in a Bottle', ' Cruise'],
   options: []
 }
 

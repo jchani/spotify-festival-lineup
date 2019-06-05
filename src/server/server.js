@@ -89,6 +89,12 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
+app.get('/log_out', function(req, res) {
+  res.clearCookie('name');
+  res.clearCookie('token');
+  res.redirect('/');
+})
+
 app.listen(port, () => {
   console.log('Server is up!');
 });

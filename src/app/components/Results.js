@@ -43,24 +43,24 @@ export default class Results extends React.Component {
 
   render() {    return (
       <div>
-        <button className="left-button" onClick={(e) => {
-          this.populateModal("short_term");
+        <button className='left-button' onClick={(e) => {
+          this.populateModal('short_term');
         }}>
           Last Month
         </button>
-        <button className="middle-button" onClick={(e) => {
-          this.populateModal("medium_term");
+        <button className='middle-button' onClick={(e) => {
+          this.populateModal('medium_term');
         }}>
           Last 6 Months
         </button>
-        <button className="right-button" onClick={(e) => {
-          this.populateModal("long_term");
+        <button className='right-button' onClick={(e) => {
+          this.populateModal('long_term');
         }}>
           All Time
         </button>
 
         <Modal 
-          size="lg"
+          size='lg'
           show={this.state.modalOpen}
            onHide={this.handleClose}
             closeButton
@@ -70,10 +70,10 @@ export default class Results extends React.Component {
           <Modal.Body>
             <div>
               {this.state.name != '' &&
-              <div className="modal-mini-header">
-                <div className="vertical-flow">
+              <div className='modal-mini-header'>
+                <div className='vertical-flow'>
                   <div>{`${this.state.name}'s`}</div>
-                  <div className="festival-title">{`${this.getRandom(this.state.festivalNamePrefixes)}${this.getRandom(this.state.festivalNameSuffixes)}`}</div>
+                  <div className='festival-title'>{`${this.getRandom(this.state.festivalNamePrefixes)}${this.getRandom(this.state.festivalNameSuffixes)}`}</div>
                 </div>
                 </div>}
               <LineUp artists={this.state.artists}></LineUp>
