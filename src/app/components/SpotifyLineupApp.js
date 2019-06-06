@@ -15,7 +15,6 @@ class SpotifyLineupApp extends React.Component {
       token: ''
     };
 
-    this.clearSession = this.clearSession.bind(this);
     this.setToken = this.setToken.bind(this);
   }
 
@@ -36,17 +35,6 @@ class SpotifyLineupApp extends React.Component {
     } else {
       return null;
     }
-  }
-
-  /**
-   * Authentication
-   */
-  clearSession() {
-    Object.keys(sessionStorage).forEach(key => {
-      sessionStorage.removeItem(key);
-    });
-    this.setState({ token: '' });
-    axios.get('/log-out');
   }
 
   setToken(token) {

@@ -11,5 +11,5 @@ export function getName(access_token) {
 }
 
 export function refreshToken(refresh_token) {
-  return axios.get(`/refresh?refresh=${refresh_token}`);
+  return axios.get(`/refresh_token?refresh=${refresh_token}`);
 };

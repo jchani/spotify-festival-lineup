@@ -1,12 +1,22 @@
 * {
   font-family: 'Futura';
 }
-.background {
-  background: url('../images/Coachella.jpg');
+
+body:after{
+  content:"";
+  position:fixed; /* stretch a fixed position to the whole screen */
+  top:0;
+  height:100vh; /* fix for mobile browser address bar appearing disappearing */
+  left:0;
+  right:0;
+  z-index:-1; /* needed to keep in the background */
+  background: url('../images/Coachella.jpg') no-repeat right top;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
-  width: 100vw;
 }
+
 
 .nav-bar {
   display: flex;
@@ -32,7 +42,6 @@ a.remove-underline {
   border: none;
   //format text
   text-align: center;
-  // color: white;
 }
 
 .header {
@@ -129,4 +138,39 @@ button {
 
 .row4 {
   font-size: medium;
+}
+
+//Making things mobile-friendly
+//Pixel/Iphone X and smaller
+@media only screen 
+and (max-width : 414px) 
+and (max-height : 823px) 
+and (orientation : portrait) {
+  body:after{
+    background-position: center center; //repositioning image 
+  }
+  .header main {
+    font-size: 4rem;
+    font-weight: 500;
+  }
+  .nav-bar {
+    padding-top: 1rem;
+    padding-right: 1rem;
+  }
+  .login-container {
+    min-width: 300px;
+  }
+  button {
+    border-radius: 0px 0px 0px 0px !important;
+  }
+}
+
+//Iphone 5 and smaller
+@media only screen 
+and (max-width : 320px) 
+and (max-height : 568px) 
+and (orientation : portrait) {
+  .header {
+    margin-top: 5rem;
+  }
 }

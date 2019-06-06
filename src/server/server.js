@@ -53,12 +53,6 @@ app.get('/callback', function(req, res) {
     const maxAge = body.expires_in;
     const expiration = new Date(Number(new Date()) + (maxAge * 1000));
 
-    const options = {
-      url: 'https://api.spotify.com/v1/me',
-      headers: { 'Authorization': 'Bearer ' + accessToken },
-      json: true
-    };
-
     res.cookie('token', accessToken, { expires: expiration, httpOnly: false});
     res.cookie('refresh', refreshToken);
     //TODO: store in cookie when we merge servers
@@ -69,22 +63,24 @@ app.get('/callback', function(req, res) {
 
 app.get('/refresh_token', function(req, res) {
   // requesting access token from refresh token
-  var refresh_token = req.query.refresh_token;
-  var authOptions = {
+  const refreshToken = req.query.refresh_token;
+  const authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: { 'Authorization': 'Basic ' + (Buffer.from(clientId + ':' + clientSecret).toString('base64')) },
     form: {
       grant_type: 'refresh_token',
-      refresh_token: refresh_token
+      refresh_token: refreshToken
     },
     json: true
   };
 
   request.post(authOptions, function(error, response, body) {
-    var access_token = body.access_token;
+    const accessToken = body.access_token;
+    const maxAge = body.expires_in;
+    const expiration = new Date(Number(new Date()) + (maxAge * 1000));
     res.cookie('token', accessToken, { 'expire': expiration, httpOnly: false});
     res.send({
-      'access_token': access_token
+      'access_token': accessToken
     });
   });
 });
